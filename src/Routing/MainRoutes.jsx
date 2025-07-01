@@ -1,7 +1,9 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Todos from '../pages/todos'
+
 import Pagenotfound from '../pages/Pagenotfound'
+import Todos from '../pages/Todos/'
+// import Todos from '../pages/Todos/'
 const MainRoutes = () => {
   return (
     <div>
