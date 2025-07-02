@@ -53,13 +53,13 @@ const Todos = () => {
   }
 
   return (
-    <div className='w-full flex flex-col items-center min-h-screen py-10 px-4'>
+    <div className='w-full min-h-screen flex flex-col items-center px-4 py-10 '>
       {/* Input Form */}
       <form
-        className='w-full max-w-2xl p-4 sm:p-6 rounded-lg flex flex-col sm:flex-row items-center justify-center gap-4'
+        className='w-full max-w-2xl p-4 sm:p-6 rounded-lg flex flex-col sm:flex-row items-center justify-center gap-4 bg-white shadow'
         onSubmit={handleSubmit(loadtodohandler)}
       >
-        <div className='flex flex-col w-full sm:w-auto flex-1'>
+        <div className='flex flex-col w-full sm:flex-1'>
           <input
             {...register("task", {
               required: "Task is required!",
@@ -86,7 +86,7 @@ const Todos = () => {
       </form>
 
       {/* Todo List */}
-      <div className='w-full max-w-2xl mt-6'>
+      <div className='w-full max-w-2xl mt-8 h-[60vh] sm:h-[70vh] overflow-y-auto px-2 scrollbar-thin [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-[#66c4c2] [&::-webkit-scrollbar-thumb]:rounded-full'>
         <h2 className='text-xl font-bold text-gray-700 mb-4 text-center sm:text-left'>Your Tasks</h2>
 
         {todos.length === 0 ? (
@@ -94,7 +94,7 @@ const Todos = () => {
         ) : (
           <div className='flex flex-col gap-4'>
             {todos.map((todo) => (
-              <div key={todo.id} className='bg-white p-4 flex flex-col sm:flex-row justify-between sm:items-center gap-4 rounded-lg shadow-sm border-l-4 border-[#518399]'>
+              <div key={todo.id} className={`${todo.completed ? "bg-zinc-100" : "bg-white"} p-4 flex flex-col sm:flex-row justify-between sm:items-center gap-4 rounded-lg shadow-sm border-l-4 border-[#518399]`}>
                 {editingId === todo.id ? (
                   <input
                     value={editText}
@@ -135,20 +135,34 @@ const Todos = () => {
                       </button>
                     </>
                   ) : (
-                    <>
-                      <button
-                        className='bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-1 rounded text-sm'
-                        onClick={() => updateHandler(todo)}
-                      >
-                        Update
-                      </button>
-                      <button
-                        className='bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm'
-                        onClick={() => deleteHandler(todo.id, todo)}
-                      >
-                        Delete
-                      </button>
-                    </>
+                    todo.completed ? (
+                      <>
+                        <span className="text-green-600 font-semibold text-sm uppercase tracking-wide px-2 border border-green-400 rounded">
+                          Completed
+                        </span>
+                        <button
+                          className='bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm'
+                          onClick={() => deleteHandler(todo.id, todo)}
+                        >
+                          Delete
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          className='bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-1 rounded text-sm'
+                          onClick={() => updateHandler(todo)}
+                        >
+                          Update
+                        </button>
+                        <button
+                          className='bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm'
+                          onClick={() => deleteHandler(todo.id, todo)}
+                        >
+                          Delete
+                        </button>
+                      </>
+                    )
                   )}
                 </div>
               </div>

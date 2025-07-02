@@ -1,3 +1,4 @@
 @import "tailwindcss";
 
 /* Default Body Styles */
+@plugin 'tailwind-scrollbar';
