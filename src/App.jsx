@@ -3,7 +3,7 @@ import MainRoutes from './Routing/MainRoutes'
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-gray-100 to-indigo-100  font-[Montserrat] px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen w-screen bg-gradient-to-tr from-gray-100 to-indigo-100  font-[Montserrat] px-4 ">
   <MainRoutes />
 </div>
 
