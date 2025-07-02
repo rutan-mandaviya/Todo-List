@@ -97,8 +97,8 @@ const date=new Date();
       </form>
 
       {/* Todo List */}
-     <div className='w-full flex flex-col items-center  '>
-  <h2 className='text-xl font-bold text-gray-700 mb-4'>Your Tasks</h2>
+     <div className='w-full max-w-xl flex flex-col   '>
+  <h2 className='text-xl font-bold text-gray-700 mb-4 '>Your Tasks</h2>
 
   {todos.length === 0 ? (
     <p className='text-gray-500 text-center'>No tasks yet.</p>
@@ -107,7 +107,7 @@ const date=new Date();
     <div className="flex flex-col gap-4">
 
       {todos.map((todo,index)=>(
-          <div key={todo.id} className="bg-white p-4 flex  justify-between items-center rounded-lg shadow-sm border-l-4 border-[#518399]">
+          <div key={todo.id} className="bg-white p-4 flex   justify-between items-center rounded-lg shadow-sm border-l-4 border-[#518399]">
 
             {editingId ==todo.id ?(
             <input
@@ -117,7 +117,7 @@ const date=new Date();
             />)
             
 :(
-  <div className='flex items-center sm:flex-col justify-center gap-4'>
+  <div className='flex items-center  gap-4'>
     <input
       type="checkbox"
       onChange={()=>dispatch(asyncTogglecompleted(todo.id))}
@@ -166,59 +166,6 @@ const date=new Date();
     </div>
 
   )
-  //  ( 
-  //  <div className='flex flex-col gap-4'>
-  //     {todos.map((todo) => (
-  //       <div
-  //         key={todo.id}
-  //         className='bg-white p-4 flex justify-between items-center rounded-lg shadow-sm border-l-4 border-[#518399]'
-  //       >
-  //         {editingId === todo.id ? (
-  //           <input
-  //             value={editText}
-  //             onChange={(e) => setEditText(e.target.value)}
-  //             className='border px-3 py-1 rounded w-2/3 text-sm outline-none'
-  //           />
-  //         ) : (
-  //           <p className='text-gray-800 font-medium'>{todo.task}</p>
-  //         )}
-
-  //         <div className='flex gap-2'>
-  //           {editingId === todo.id ? (
-  //             <>
-  //               <button
-  //                 onClick={() => saveHandler(todo.id)}
-  //                 className='bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm'
-  //               >
-  //                 Save
-  //               </button>
-  //               <button
-  //                 onClick={cancelHandler}
-  //                 className='bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm'
-  //               >
-  //                 Cancel
-  //               </button>
-  //             </>
-  //           ) : (
-  //             <>
-  //               <button
-  //                 onClick={() => updateHandler(todo)}
-  //                 className='bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-1 rounded text-sm'
-  //               >
-  //                 Update
-  //               </button>
-  //               <button
-  //                 onClick={() => deleteHandler(todo.id, todos)}
-  //                 className='bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm'
-  //               >
-  //                 Delete
-  //               </button>
-  //             </>
-  //           )}
-  //         </div>
-  //       </div>
-  //     ))}
-  //   </div>)
   }
 </div>
 
